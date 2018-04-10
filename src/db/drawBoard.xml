@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- board.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DrawBoard">	
+	<select id="selectAll" resultType="int">
+      SELECT COUNT(*) FROM PAGET
+   </select>
+   <select id="selectList" resultType="drawBoard.PageTDataBean">
+      SELECT * FROM PATHT
+   </select>   
+   <select id="selectOne" parameterType="String" resultType="String">
+         SELECT localpath FROM PATHT
+   </select>
+   <select id="selectPatient" resultType="drawBoard.PatientTDataBean">
+         SELECT * FROM PATIENTT
+   </select>	
+<!--    <select id="selectPath" resultType="drawBoard.PathTDataBean">
+         SELECT * FROM PATHT
+   </select>  -->
+      <select id="selectPath" resultType="drawBoard.PathTDataBean">
+         SELECT * FROM PATHT2
+   </select> 
+   <select  id="selectPrescription" resultType="drawBoard.PrescriptionTDataBean"> 
+   		SELECT * FROM PRESCRIPTIONT 
+   	</select>
+   	
+   	<select id="selectWait" resultType="drawBoard.WaitDataBean">
+   		select a.name, a.patid, b.patid, b.treatno, c.treatno, c.localpath
+		from patientt a, treatt b, patht2 c
+		where a.patid=b.patid and b.treatno=c.treatno and c.localpath!='#';
+   	</select>
+   	
+   	<select id="selectLogin" resultType="drawBoard.LoginDataBean" parameterType="String">
+   		SELECT * FROM USERT WHERE userid=#{id}
+   	</select>
+   	
+</mapper>
+
+

@@ -1,0 +1,52 @@
+@charset "UTF-8"; 
+ 
+/*노말라이징 시작*/
+body, ul, li { padding: 0; margin: 0; list-style: none;}
+a { color: inherit; text-decoration: inherit;} 
+ 
+/*노말라이징 끝*/ 
+/* 사이드 바 */
+#side-bar {
+    z-index:3;
+    /* 드래그 못 하도록 처리 */
+    user-select: none;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:200px;
+    height:100%;
+    background-color:#7AC3CC;
+    box-shadow:rgba(0, 0, 0, 0.15) 0px 0px 2px 2px;     
+    color:white;
+    /* 이게 있어야 화면 높이가 줄었을 경우에도 레이아웃이 깨지지 않는다. */
+    min-height:600px;
+} 
+ 
+#side-bar .logo {
+	position: relative;
+}
+
+#side-bar .menu {
+	position: absolute;
+	left: 10%;
+	top: 20px;
+} 
+  
+/* 사이드바 상단메뉴의 2차 메뉴 */
+#side-bar .menu > ul > li > ul {
+    padding-left:20px;
+}
+/* 사이드바 상단메뉴아이템 텍스트 */
+#side-bar .menu li > a {
+    display:block;
+    /* 줄바꿈 안되게 하려고 */
+    white-space:nowrap;
+    transition:color 0.5s;
+}
+/* 사이드바 상단메뉴아이템 텍스트에 마우스 올렸을 때 */
+#side-bar .menu li > a:hover {
+    color:black;
+}
+ 
+ 
+ 
