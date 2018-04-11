@@ -88,6 +88,22 @@ public class BoardDBBean implements BoardDao {
 			sqlSession.close();
 			return result;
 		}
+	
+	@Override
+		public List<PatientTDataBean> selectPatientById(String patId) {
+			SqlSession sqlSession =  new SqlMapClient().getSqlSession();
+			List<PatientTDataBean> patient = sqlSession.selectList("DrawBoard.selectPatientById",patId);
+			sqlSession.close();
+			return patient;
+		}
+	
+	@Override
+		public List<PatientTDataBean> selectPatientByName(String patName) {
+		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
+		List<PatientTDataBean> patient = sqlSession.selectList("DrawBoard.selectPatientByName",patName);
+		sqlSession.close();
+		return patient;
+		}
 }
  
  

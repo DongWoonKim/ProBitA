@@ -12,4 +12,6 @@ public interface BoardDao {
 	public PathTDataBean selectPathByPort(int pathPort);
 	public List<WaitDataBean> selectWait();
 	public LoginDataBean selectLogin(String id);
+	public List<PatientTDataBean> selectPatientById(String patId);
+	public List<PatientTDataBean> selectPatientByName(String patName);
 }

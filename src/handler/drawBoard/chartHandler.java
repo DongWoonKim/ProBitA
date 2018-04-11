@@ -20,8 +20,7 @@ public class chartHandler implements CommandHandler {
 	@Resource(name="boardDao")
 	private BoardDao boardDao;
 	
-	@RequestMapping("/main")
-	
+	@RequestMapping("/main")	
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("utf-8");		

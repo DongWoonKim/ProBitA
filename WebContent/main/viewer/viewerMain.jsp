@@ -85,16 +85,69 @@
 		font-weight: bold;
 	}
 	
+	.menuListCompo:hover {
+		 background-color: #838383;
+		 color: #FFFFFF;		 
+	}
+	
 
 </style>
+
+<script src="/Pra01/main/myAjax.js"></script>
+<script>
+	window.onload = function() {		
+		
+		var pNumberInput = document.getElementById('pNumberInput');
+		
+		
+		var inputType = document.getElementById('inputType');		
+		
+		pNumberInput.addEventListener("keydown", function(event) {
+			if(event.keyCode == 13) {
+				var info = pNumberInput.value;
+				var type = inputType.options[inputType.selectedIndex].value;
+				
+				searchInfo(info, type);
+				pNumberInput.value = "";
+				
+			}			
+		});
+		
+	}
+	
+
+
+	function searchInfo (info, type) {
+		var params = {"info" : info, "type" : type};
+		myAjax({
+			method:"POST",
+			url:"../../searchInfo.do",
+			params:params,
+			success: function (data) { 						 
+				arr = JSON.parse(data);
+				
+				if(arr.length >=2 ) {					
+					var popup = window.open("http://localhost:8080/Pra01/main/viewer/searchResult.jsp", "popup", "location=no, width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+					popup.arr = arr;
+					
+				} else {
+					document.getElementById('pNumber').innerHTML = "환자번호 : " + arr[0].patId;
+					document.getElementById('pName').innerHTML = "이름 : " + arr[0].patName;
+					document.getElementById('pJumin').innerHTML = "주민번호 : " + arr[0].patJumin.slice(0,6) + "-" + arr[0].patJumin.slice(6,8) + "xxxxx";
+				}
+			}
+		});
+	} 
+
+</script>
 <body>
 	<div class="viewerWrap">
 		<div class="infoView">
 <!-- 			<div id="patientInfo" style="width: 78%">환자번호 : 10101   이름 : 양승현  주민번호 : 930912-11*****</div> -->
 			<div id="patientInfo" style="width: 100%; height: 100%;">
-				<div id="pNumber" style="width: 15%; height: 100%;">환자번호 : 10101</div>
-				<div id="pName" style="width: 17%; height: 100%;">이름 : 양승현</div>
-				<div id="pJumin" style="width: 15%; height: 100%;">주민번호 : 930912-11*****</div>
+				<div id="pNumber" style="width: 15%; height: 100%;">환자번호 : ${patId }</div>
+				<div id="pName" style="width: 17%; height: 100%;">이름 : ${patName}</div>
+				<div id="pJumin" style="width: 15%; height: 100%;">주민번호 : ${patJumin }</div>
 				<div id="userInfo" style="width: 35%; height: 100%; text-align: right;">${userId }</div>
 			</div>			
 		</div>	
@@ -103,7 +156,10 @@
 			<div class="pNumberSearch">
 				
 				<div>
-					환자번호
+					<select id="inputType" >
+						<option value="patId">환자번호
+						<option value="patName" >환자이름
+					</select>
 					<input type="text" id="pNumberInput" size="10"/>
 				</div>
 				

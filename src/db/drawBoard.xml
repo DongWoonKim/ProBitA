@@ -34,6 +34,15 @@
    		SELECT * FROM USERT WHERE userid=#{id}
    	</select>
    	
+   	<select id="selectPatientById" resultType="drawBoard.PatientTDataBean" parameterType="String">
+   		SELECT * FROM PATIENTT WHERE patid=#{patId}
+   	</select>
+   	
+   	<select id="selectPatientByName" resultType="drawBoard.PatientTDataBean" parameterType="String">
+   		SELECT * FROM PATIENTT WHERE name=#{patName}
+   	</select>
+
+   	
 </mapper>
 
 
