@@ -26,12 +26,7 @@ public class chartHandler implements CommandHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("utf-8");		
 		response.setContentType("text/html; charset=UTF-8"); 		 
-		List<PathTDataBean> list = boardDao.selectPath();	
-		
-		for(PathTDataBean v : list) {
-			System.out.println(v.getLocalpath());
-		}
-		
+		List<PathTDataBean> list = boardDao.selectPath();			
 		request.setAttribute("list", list);		
 		return new ModelAndView("chartAjax");
 	}	

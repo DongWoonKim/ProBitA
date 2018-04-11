@@ -13,7 +13,7 @@ var picture = {
  * 2 : 사각형
  */
 var eventObject = {
-   mode: 0,   
+   mode: 4,   
    click : false,   
    x: 0,   
    y: 0,
@@ -36,7 +36,7 @@ function clearCanvas(event)
    if (eventObject.click) { 
       // 픽셀 정리
       picture.context.clearRect(eventObject.x, eventObject.y, 50, 50);
-       // 컨텍스트 리셋
+      // 컨텍스트 리셋
       picture.context.beginPath();
    }
  
@@ -47,7 +47,7 @@ function setClickTrue(){
    eventObject.click = true;
 }
 
-function setClickFalse(){
+function setClickFalse(){	 
    eventObject.click = false;
 }  
 
@@ -61,18 +61,23 @@ function dragEvent(event) {
    eventObject.x = coors.X; 
    eventObject.y = coors.Y;     
    
-   if (eventObject.click) { 
-      g.lineTo(eventObject.x, eventObject.y); 
-      g.stroke();      
+   if (eventObject.click) { 	 
+	  g.lineTo(eventObject.x, eventObject.y); 
+      g.stroke(); 
+//	   var dot = 2;
+//	   var color = 'rgb(0, 0, 0)';
+//	   g.fillStyle = color;
+//	   g.fillRect(eventObject.x, eventObject.y, dot, dot); 
+      
    } 
 }  
 
 // 좌표 출력
-function printXY(e){
-   var g = picture.context;
-   document.getElementById("x").innerHTML = e.x;
-   document.getElementById("y").innerHTML = e.y;
-} 
+//function printXY(e){
+//   var g = picture.context;
+//   document.getElementById("x").innerHTML = e.x;
+//   document.getElementById("y").innerHTML = e.y;
+//} 
 
 // 라인, 사각형 등 이전 좌표가 필요할 경우 이전좌표 세팅
 function setBeforeXY(e){
@@ -100,7 +105,7 @@ function drawRect(e){
 // 각 경우에 따라서 이벤트리스너를 달아준다.
 function mouseListener(){
    var mode = Number(eventObject.mode);
-   picture.canvas.addEventListener("mousemove", printXY, false);
+  // picture.canvas.addEventListener("mousemove", printXY, false);
  
    switch(mode){
       case 0:

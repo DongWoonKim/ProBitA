@@ -182,9 +182,9 @@ a {
 .row > .col > .img-box:hover::after {
   display: block;
 }
-.row > .col > .img-box:hover > img {
-  transform: scale(1.2);
-}
+/* .row > .col > .img-box:hover > img { */
+/*   transform: scale(1.2); */
+/* } */
 .col.col-md-1-4 {
   width: 25%;
   height: 89.5px;
