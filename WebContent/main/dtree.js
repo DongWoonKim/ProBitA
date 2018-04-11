@@ -336,8 +336,19 @@ dTree.prototype.getNode = function(id) {
 		}
 	} 
 }
-
+function initCanvas () {
+	// canvas
+    var cnvs = document.getElementById('canvas');
+    // context
+    var ctx = canvas.getContext('2d');
+    // 픽셀 정리
+    ctx.clearRect(0, 0, cnvs.width, cnvs.height);
+    // 컨텍스트 리셋
+    ctx.beginPath();
+    changeMode(4);
+}
 function drawMainImage(url) {
+	initCanvas ();
 	var mainView = document.getElementById('mainView');
 	var mainImg = document.createElement('img');
 	
@@ -350,14 +361,26 @@ function drawMainImage(url) {
 	mainView.appendChild(mainImg);	
 }
 
-dTree.prototype.drawThumb = function(id, pid) {	  	 
+function initCanvas () {
+	// canvas
+    var cnvs = document.getElementById('canvas');
+    // context
+    var ctx = canvas.getContext('2d');
+    // 픽셀 정리
+    ctx.clearRect(0, 0, cnvs.width, cnvs.height);
+    // 컨텍스트 리셋
+    ctx.beginPath();
+    changeMode(4);
+}
+
+dTree.prototype.drawThumb = function(id, pid) {	 
 	if(pid === 1) {	
 		var templates = '';
-		var thumAjaxImages = document.getElementById('thumAjaxImages');					
+		var thumAjaxImages = document.getElementById('thumAjaxImages');
+		 
 		 for(var i = 0; i < this.aNodes.length; i++) {
-			if(id < this.aNodes[i].id) {
-				if(this.aNodes[i].pid === id) {						 
-					 
+			if(id < this.aNodes[i].id) { 
+				if(this.aNodes[i].pid === id) {		 
 					var nodeUrl = this.aNodes[i].url; 
 					templates += '<div class="col col-md-1-4 col-sm-1-2 col-xs-1-1" onclick="';
 					templates += "drawMainImage('"+nodeUrl+"')";
@@ -372,7 +395,8 @@ dTree.prototype.drawThumb = function(id, pid) {
 		 
 	}
 	
-	if(pid > 1 ) {		 
+	if(pid > 1 ) {		
+		initCanvas();
 		var node = this.getNode(id);			 
 		var mainView = document.getElementById('mainView');		
 		mainView.innerHTML = "";	 

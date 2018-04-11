@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class loginProHandler{
 
 	@RequestMapping("/loginPro")
-	public void process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		System.out.println("hi");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws Throwable {		 
 		response.sendRedirect("main/viewer/viewerMain.jsp");
 	}
 }

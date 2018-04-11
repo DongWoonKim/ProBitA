@@ -7,18 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/Pra01/side/sideBar.css" />
 <link rel="stylesheet" href="/Pra01/main/chart.css" />  
-<script type="text/javascript" src="/Pra01/main/dtree.js"></script>
-<link rel="StyleSheet" href="/Pra01/main/dtree.css" type="text/css" />
 <script src="/Pra01/main/myAjax.js"></script>
-<script src="/Pra01/main/chart.js"></script>
 <script src="/Pra01/main/canvas.js"></script>
 <script src="/Pra01/main/wait.js"></script>
+<script src="/Pra01/main/chart.js"></script>
 <jsp:include page="/side/sideBar.jsp"></jsp:include>
+<script type="text/javascript" src="/Pra01/main/dtree.js"></script>
+<link rel="StyleSheet" href="/Pra01/main/dtree.css" type="text/css" />
 
 <title>Insert title here</title> 
  
 <script>
-
+function initCanvas () {
+	// canvas
+    var cnvs = document.getElementById('canvas');
+    // context
+    var ctx = canvas.getContext('2d');
+    // 픽셀 정리
+    ctx.clearRect(0, 0, cnvs.width, cnvs.height);
+    // 컨텍스트 리셋
+    ctx.beginPath();
+    changeMode(4);
+}
 var arr = [];
 window.onload = function() { 
 	//차트에 글쓰기 -- 캔버스
@@ -65,10 +75,11 @@ function selectThumImages () {
 				if(arr[i].localPath!='#') {
 					
 					col.id = arr[i].localPath;
-					col.onclick = function () {			 
-						
+					col.onclick = function () {	 
 						var mainView = document.getElementById('mainView');
 						var mainImg = document.createElement('img');
+						
+						initCanvas();
 						
 						mainView.innerHTML = '';
 						
@@ -81,8 +92,7 @@ function selectThumImages () {
 					
 					imgBox.appendChild(img);				 
 					col.appendChild(imgBox);
-					thumAjaxImages.appendChild(col);	
-					
+					thumAjaxImages.appendChild(col);	 
 				}
 							
 			}
@@ -118,28 +128,22 @@ function selectThumImages () {
 						 
 		</div>
 		<div id="editorList">
-			mode : <span id="mode"></span> 
-			x좌표 : <span id="x"></span> 
-			y좌표 : <span id="y"></span> 
-			<input type="button" value="pen" onclick="changeMode(0)">
-			<input type="button" value="erase" onclick="changeMode(3)">
-			<input type="button" value="saveBase64" onclick="save()" />
-			<input type="button" value="saveImg" onclick="save2()" />
+		 
 		</div>
 		<div id="mainView"></div>	
 		<canvas id="canvas" width="794" height="1123"></canvas>	
 	</div> 
 	
 	<div id="listView2">
-			<div id="listView2button" align="center">
+		<div id="listView2button" align="center">
 			<span class="wait" onclick="selectPatient()">대기</span> 
 			|
 			<span class="pre" onclick="selectPre()">처방</span>
 			|
 			<span class="config" onclick="selectConfig()">설정</span>
-			</div>
-			<hr>
-			<div id="viewList"></div>
+		</div>
+		<hr>
+		<div id="viewList"></div>
 	</div>
 	
 </body> 
