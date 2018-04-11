@@ -141,6 +141,7 @@
 
 </script>
 <body>
+	<input type="hidden" id="hiddenPatId"/>
 	<div class="viewerWrap">
 		<div class="infoView">
 <!-- 			<div id="patientInfo" style="width: 78%">환자번호 : 10101   이름 : 양승현  주민번호 : 930912-11*****</div> -->
