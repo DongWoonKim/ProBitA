@@ -17,8 +17,8 @@
 <!--    <select id="selectPath" resultType="drawBoard.PathTDataBean">
          SELECT * FROM PATHT
    </select>  -->
-      <select id="selectPath" resultType="drawBoard.PathTDataBean">
-         SELECT * FROM PATHT2
+      <select id="selectForm" resultType="drawBoard.FormTDataBean">
+         SELECT * FROM FORMT
    </select> 
    <select  id="selectPrescription" resultType="drawBoard.PrescriptionTDataBean"> 
    		SELECT * FROM PRESCRIPTIONT 

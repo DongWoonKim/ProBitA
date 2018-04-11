@@ -6,7 +6,7 @@
 %>
 [	
     <c:forEach items="${list}" var="list" varStatus="status">
-		{ "id" : ${list.pathid}, "pid" : ${list.pathport}, "name" : "${list.formcodename}", "url" : "${list.localpath}" }
+		{ "id" : ${list.formcode}, "pid" : ${list.pformcode}, "name" : "${list.name}", "url" : "${list.baseimgpath}" }
 		<c:if test="${!status.last}">,</c:if>
 	</c:forEach>	
 ]

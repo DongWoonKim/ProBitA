@@ -95,11 +95,9 @@ function selectPatient() {
  								templates += 'mode : <span id="mode"></span>';
  								templates += '<input type="button" value="pen" onclick="changeMode(0)">';
  								templates += '<input type="button" value="erase" onclick="changeMode(3)">';
- 								templates += '<input type="button" value="saveImg" onclick="save2()"/>';
- 								 
+ 								templates += '<input type="button" value="saveImg" onclick="save2()"/>'; 
  								
- 								editorList.innerHTML = templates;
- 								 
+ 								editorList.innerHTML = templates; 
  								 
  								mainView.innerHTML = '';
 								
