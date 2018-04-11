@@ -32,7 +32,7 @@ margin-top:20%;
 	<form name="mainform" method="post" action="../login.do">
 		<table align="center">
 			<tr>
-				<th>ID</td>
+				<th>ID</th>
 				<td><input type="text" name="userid"/></td>
 			</tr>
 			<tr>
@@ -43,8 +43,7 @@ margin-top:20%;
 			<th>
 			<td>
 				<input class="button" type="submit" value="·Î±×ÀÎ" />
-			</td>
-			</th>
+			</td>			 
 			</tr>
 		</table>
 	</form>

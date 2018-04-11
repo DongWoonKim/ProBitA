@@ -39,6 +39,11 @@ public class inputChartBaseToImageDecoder implements CommandHandler {
 	 
 		
 		String get = request.getParameter("image");
+		String patId = request.getParameter("patId");
+		String formCode = request.getParameter("formCode");
+		
+		System.out.println(patId + "," + formCode);
+		
 		get = get.replaceAll("\\p{Z}", "+");	 
 		get = get.replaceAll("_", "/");
 		get = get.replaceAll("-", "+"); 

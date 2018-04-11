@@ -347,7 +347,8 @@ function initCanvas () {
     ctx.beginPath();
     changeMode(4);
 }
-function drawMainImage(url) {
+function drawMainImage(url, code) {
+	formCode = code;	 
 	initCanvas ();
 	var mainView = document.getElementById('mainView');
 	var mainImg = document.createElement('img');
@@ -374,7 +375,8 @@ function initCanvas () {
 }
 
 dTree.prototype.drawThumb = function(id, pid) {	 
-	if(pid === 1) {	
+	console.log(id, pid);
+	if(pid === 1001) {	
 		var templates = '';
 		var thumAjaxImages = document.getElementById('thumAjaxImages');
 		 
@@ -383,7 +385,7 @@ dTree.prototype.drawThumb = function(id, pid) {
 				if(this.aNodes[i].pid === id) {		 
 					var nodeUrl = this.aNodes[i].url; 
 					templates += '<div class="col col-md-1-4 col-sm-1-2 col-xs-1-1" onclick="';
-					templates += "drawMainImage('"+nodeUrl+"')";
+					templates += "drawMainImage('" +nodeUrl + "' , '" + this.aNodes[i].id +"')";
 					templates += '">';
 					templates += '<div class="img-box"><img src="'+ nodeUrl +'">';
 					templates += '</div>'; 
@@ -395,12 +397,13 @@ dTree.prototype.drawThumb = function(id, pid) {
 		 
 	}
 	
-	if(pid > 1 ) {		
+	if(pid > 1001 ) { 
 		initCanvas();
-		var node = this.getNode(id);			 
+		var node = this.getNode(id);	
+		formCode = node.id; 
 		var mainView = document.getElementById('mainView');		
 		mainView.innerHTML = "";	 
-		mainView.innerHTML = '<img src="' + node.url + '">';
+		mainView.innerHTML = '<img src="' + node.url + '">'; 
 	}	
 	
 }

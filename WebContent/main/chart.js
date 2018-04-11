@@ -11,14 +11,14 @@ myAjax({
 		d = new dTree('d')
 		
 		var dtree = document.getElementById('dtree');
-		var json = JSON.parse(data);
+		var json = JSON.parse(data); 
 		
 		for (var i = 0; i < json.length; i++) {
 			var id = json[i].id
 			var pid = json[i].pid
 			var name = json[i].name
 			var url = json[i].url
-			
+			console.log(id, pid, name, url);
 			d.add(id, pid, name, url)
 		} 
 		var template = ''; 

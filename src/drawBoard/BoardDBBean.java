@@ -46,15 +46,7 @@ public class BoardDBBean implements BoardDao {
 		sqlSession.close();
 		return result;
 	}
-
-	@Override
-	public List<PathTDataBean> selectPath() {
-		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
-		List<PathTDataBean> result = sqlSession.selectList("DrawBoard.selectPath");
-		sqlSession.close();
-		return result;
-	}
-
+ 
 	@Override
 	public PathTDataBean selectPathByPort(int pathPort) {
 		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
@@ -104,6 +96,14 @@ public class BoardDBBean implements BoardDao {
 		sqlSession.close();
 		return patient;
 		}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////	
+	@Override
+	public List<FormTDataBean> selectForm() {
+		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
+		List<FormTDataBean> result = sqlSession.selectList("DrawBoard.selectForm");
+		sqlSession.close();
+		return result;
+	}
 }
  
  
