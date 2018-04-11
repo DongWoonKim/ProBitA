@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <jsp:include page="/side/sideBar.jsp"></jsp:include>
 <link rel="stylesheet" href="/Pra01/side/sideBar.css" />
+
 </head>
 <style>
 	.viewerWrap {
@@ -90,17 +91,53 @@
 		 color: #FFFFFF;		 
 	}
 	
-
+	#listTree {
+		position: absolute;
+		top: 30px;
+		left: 40px;
+		width: 160px;
+		height: 420px;
+		border: 1px solid #000000;
+		box-sizing: border-box;
+		background-color: #FFFFFF;
+		
+	}
 </style>
-
 <script src="/Pra01/main/myAjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
 <script>
 	window.onload = function() {		
 		
 		var pNumberInput = document.getElementById('pNumberInput');
 		
 		
-		var inputType = document.getElementById('inputType');		
+		var inputType = document.getElementById('inputType');
+		
+		$('#listTree').jstree({ 'core' : {
+		    'data' : [
+		       { "id" : "ajson1", "parent" : "#", "text" : "Simple root node" },
+		       { "id" : "ajson2", "parent" : "#", "text" : "Root node 2" },
+		       { "id" : "ajson3", "parent" : "ajson2", "text" : "Child 1" },
+		       { "id" : "ajson4", "parent" : "ajson2", "text" : "Child 2" },
+		    ]
+		} });
+
+// 		$(function () { $('#listTree').jstree(); });
+		
+// 		$('#listTree').jstree();
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		pNumberInput.addEventListener("keydown", function(event) {
 			if(event.keyCode == 13) {
@@ -115,8 +152,6 @@
 		
 	}
 	
-
-
 	function searchInfo (info, type) {
 		var params = {"info" : info, "type" : type};
 		myAjax({
@@ -134,13 +169,22 @@
 					document.getElementById('pNumber').innerHTML = "환자번호 : " + arr[0].patId;
 					document.getElementById('pName').innerHTML = "이름 : " + arr[0].patName;
 					document.getElementById('pJumin').innerHTML = "주민번호 : " + arr[0].patJumin.slice(0,6) + "-" + arr[0].patJumin.slice(6,8) + "xxxxx";
+					
+					document.getElementById('hiddenPatId').value = arr[0].patId;					
 				}
+				
+				
 			}
 		});
 	} 
 
 </script>
 <body>
+<!-- 	hidden info -->
+	<input type="hidden" id="hiddenPatId"/>
+
+
+
 	<div class="viewerWrap">
 		<div class="infoView">
 <!-- 			<div id="patientInfo" style="width: 78%">환자번호 : 10101   이름 : 양승현  주민번호 : 930912-11*****</div> -->
@@ -171,6 +215,9 @@
 				<div class="menuListCompo" style="padding-top: 37%;">메<br/>모</div>
 				<div class="menuListCompo">대<br/>기<br/>환<br/>자</div>
 				<div class="menuListCompo">환<br/>자<br/>검<br/>색</div>
+			</div>
+			<div id="listTree">
+			
 			</div>			
 		</div>
 		
