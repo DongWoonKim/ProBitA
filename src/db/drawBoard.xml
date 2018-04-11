@@ -40,8 +40,8 @@
    	
    	<select id="selectPatientByName" resultType="drawBoard.PatientTDataBean" parameterType="String">
    		SELECT * FROM PATIENTT WHERE name=#{patName}
-   	</select>
-
+   	</select>	
+	
    	
 </mapper>
 
