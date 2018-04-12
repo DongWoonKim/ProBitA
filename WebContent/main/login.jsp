@@ -1,29 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
 body{
 background-color:#7AC3CC;
 }
 .button{
-background-color: #555555;
-color: white;
-border: none;
-padding: 10px 20px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 10px;
-float:center;
-margin-left:50%;
-
+	background-color: #555555;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	float:center;
+	margin-left:50%;
 }
 .main{
-margin-top:20%;
+	margin-top:20%;
 }
 </style>
 </head>
@@ -42,7 +41,7 @@ margin-top:20%;
 			<tr>
 			<th>
 			<td>
-				<input class="button" type="submit" value="로그인" />
+				<input class="button" type="submit" value="濡쒓렇�씤" />
 			</td>			 
 			</tr>
 		</table>
