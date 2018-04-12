@@ -13,7 +13,7 @@
       var hiddenPatId = document.getElementById('hiddenPatId').value;       
       var hiddenPatName = document.getElementById('hiddenPatName').value;
       var hiddenPatJumin = document.getElementById('hiddenPatJumin').value;
-      location.href="http://localhost:8080/Pra01/main/chart.jsp?patId=" + hiddenPatId + "&patName=" + hiddenPatName + "&patJumin=" + hiddenPatJumin;      
+      location.href="http://localhost:8080/Pra01/main/chart.jsp?patId=" + hiddenPatId + "&patName=" + encodeURI(hiddenPatName, "UTF-8") + "&patJumin=" + hiddenPatJumin;      
    }
    
 </script>

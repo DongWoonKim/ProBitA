@@ -34,10 +34,7 @@ public class searchInfoHandler implements CommandHandler {
 			request.setAttribute("patient", patient);			
 		} else if(type.equals("patName")){
 			List<PatientTDataBean> patient = boardDao.selectPatientByName(info);
-			
-			for(PatientTDataBean v : patient) {
-				System.out.println(v.getName());
-			}
+			 
 			request.setAttribute("patient", patient);
 		}
 		

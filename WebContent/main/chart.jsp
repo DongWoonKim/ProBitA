@@ -16,7 +16,11 @@
 <script type="text/javascript" src="/Pra01/main/dtree.js"></script>
 <link rel="StyleSheet" href="/Pra01/main/dtree.css" type="text/css" />
 
-<title>Insert title here</title> 
+<title>Insert title here</title>
+<%
+	String test = request.getParameter("patName"); 
+	String test2 = java.net.URLDecoder.decode(test, "UTF-8"); 
+%> 
  
 <script>
 
@@ -34,7 +38,7 @@ function Request(){
 	this.getParameter = function(param){
 	//현재 주소를 decoding
 //  	var url = unescape(location.href); 
- 	var url = decodeURI(location.href); 
+ 	var url = decodeURI(location.href, "utf-8"); 
 	console.log(url);
  	//파라미터만 자르고, 다시 &그분자를 잘라서 배열에 넣는다. 
 	var paramArr = (url.substring(url.indexOf("?")+1,url.length)).split("&"); 
@@ -73,16 +77,16 @@ window.onload = function() {
 	var request = new Request();
 	// 환자번호 파라미터 값을 얻기
 	patId = request.getParameter("patId");
-	patName = request.getParameter("patName");
+// 	patName = request.getParameter("patName");
 	patJumin = request.getParameter("patJumin");
 	
-	console.log("patId : " + patId + " patName : " + patName + "patJumin" + patJumin)
+	patName = document.getElementById('hiddenPatName').value;
 	
 	var templates = '<div>';
 	templates += '<span>환자이름 : </span>';
-	templates += patName;
+	templates += patName+'&nbsp;&nbsp;';
 	templates += '<span>생년월일 : </span>';
-	templates += patJumin;
+	templates += patJumin+'&nbsp;&nbsp;';
 	templates += '<span>환자번호 : </span>';
 	templates += patId;
 	templates += '</div>'; 
@@ -147,6 +151,19 @@ function selectThumImages () {
 						mainImg.style.width ="210mm";
 						mainImg.style.height ="297mm";
 						
+						//////////////////////////////////////////////
+						var actives = document.getElementsByClassName('active'); 
+						 
+						for(var j=0 ; j<actives.length ; j++) {
+							if(actives[j] !== 'undefined'){								 
+								actives[j].classList.remove('active');	
+							}
+							
+						} 
+						this.classList.add('active');
+						//////////////////////////////////////////////
+						
+						
 						mainView.appendChild(mainImg);					
 					}
 					
@@ -186,8 +203,9 @@ function Request(){
 </script>
  
 </head> 
-<body>
-
+<body> 
+	<input id="hiddenPatName" type="hidden" value=<%=test2%>>
+	
 	<div class="chartWrap">	
 		<div id="chartMenu">		 	 
 			<form id="chartForm" class="switch switch-blue">
