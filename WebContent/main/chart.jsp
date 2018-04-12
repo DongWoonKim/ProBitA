@@ -14,18 +14,25 @@
 <script src="/Pra01/main/chart.js"></script>
 <jsp:include page="/side/sideBar.jsp"></jsp:include>
 <script type="text/javascript" src="/Pra01/main/dtree.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <link rel="StyleSheet" href="/Pra01/main/dtree.css" type="text/css" />
 
 <title>Insert title here</title> 
  
 <script>
+$(document).ready(function(){
+	$("#memotoggle").click(function(){
+		$("#memo").toggle();
+	});
+});
+
 
 var patId;
 var patName;
 var patJumin;
 
 var formCode;
-
+var memo;
 
 function Request(){
 	var requestParam ="";
@@ -215,11 +222,17 @@ function Request(){
  			<span id="mode"></span>
  			<input type="button" value="pen" onclick="changeMode(0)">
  			<input type="button" value="erase" onclick="changeMode(3)">
- 			<input type="button" value="saveImg" onclick="save2()"/> 
+ 			<input type="button" value="saveImg" onclick="save2()"/>
+			<input type="button" value="메모" id="memotoggle" />
+			<input type="button" value="상용구" onclick="#" />
+			<input type="button" value="서식" onclick="#" />
+			<input type="button" value="날짜" onclick="#" /> 			 
 		</div>
 		<div id="mainView"></div>	
 		<canvas id="canvas" width="794" height="1123"></canvas>	
 	</div> 
+	
+	<div id="userName">${userId}</div>
 	
 	<div id="listView2">
 		<div id="listView2button" align="center">
@@ -232,6 +245,6 @@ function Request(){
 		<hr>
 		<div id="viewList"></div>
 	</div>
-	
+	<div id="memo" contenteditable="true"></div>
 </body> 
 </html>

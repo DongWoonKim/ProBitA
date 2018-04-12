@@ -19,4 +19,7 @@ public interface BoardDao {
 	public List<PageTDataBean> selectAllPage();
 	public int insertPageT(PageTDataBean page);
 	public int insertChartPageT(ChartPageTDataBean chartPage);
+
+	public List<ChartPageTDataBean> selectChartpage(String patId);
+	public List<UserFormDataBean> selectUserform(String userid);
 }

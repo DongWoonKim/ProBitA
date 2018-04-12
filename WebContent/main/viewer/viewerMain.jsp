@@ -17,6 +17,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
 <link rel="stylesheet" href="css/viewerMain.css" />
 <script src="js/viewerMain.js"></script>
+<script src="js/memo.js"></script>
+<script src="js/wait.js"></script>
 <script>
 	window.onload = function() {		
 		
@@ -25,14 +27,7 @@
 		
 		var inputType = document.getElementById('inputType');
 		
-		$('#listTree').jstree({ 'core' : {
-		    'data' : [
-		       { "id" : "ajson1", "parent" : "#", "text" : "Simple root node" },
-		       { "id" : "ajson2", "parent" : "#", "text" : "Root node 2" },
-		       { "id" : "ajson3", "parent" : "ajson2", "text" : "Child 1" },
-		       { "id" : "ajson4", "parent" : "ajson2", "text" : "Child 2" },
-		    ]
-		} });
+
 	
 	//		$(function () { $('#listTree').jstree(); });
 		
@@ -47,6 +42,33 @@
 				pNumberInput.value = ""; 
 			}			
 		});
+		
+		
+		var compos = document.getElementsByClassName('menuListCompo');
+		for(var i=0 ; i<compos.length ; i++) {
+			compos[i].addEventListener("mousedown", function(event) {
+				
+				for(var j=0 ; j<compos.length ; j++) {
+					compos[j].style.backgroundColor = "#FFFFFF";
+					compos[j].style.color = "#000000";
+				}				
+				
+				this.style.backgroundColor = "#838383";
+				this.style.color = "#FFFFFF";
+				
+			})
+		}
+		
+		var formType01 = document.getElementById('formType01');
+		formType01.addEventListener("mousedown", function(event) {
+			makeNode();
+		})
+		
+		var formType02 = document.getElementById('formType02');
+		formType02.addEventListener("mousedown", function(event) {
+			makeNode();
+		})
+		
 		
 	}
 
@@ -81,11 +103,11 @@
 				
 			</div>
 			<div class="menuList">
-				<div class="menuListCompo" style="padding-top: 37%;">외<br/>래</div>
-				<div class="menuListCompo" style="padding-top: 37%;">입<br/>원</div>
+				<div class="menuListCompo" style="padding-top: 37%;" id="formType01">외<br/>래</div>
+				<div class="menuListCompo" style="padding-top: 37%;" id="formType02">입<br/>원</div>
 				<div class="menuListCompo" style="padding-top: 37%;">서<br/>식</div>
-				<div class="menuListCompo" style="padding-top: 37%;">메<br/>모</div>
-				<div class="menuListCompo">대<br/>기<br/>환<br/>자</div>
+				<div class="menuListCompo" style="padding-top: 37%;" onclick="memoPop()">메<br/>모</div>
+				<div class="menuListCompo" onclick="waitPop()">대<br/>기<br/>환<br/>자</div>
 				<div class="menuListCompo">환<br/>자<br/>검<br/>색</div>
 			</div>
 			<div id="listTree">
@@ -96,6 +118,14 @@
 		<div class="mainView">
 			
 		</div>
+		
+		<div class="viewmemo">
+	      	<div></div>
+	    </div>
+      
+      	<div class="waitView">
+      		<div class="waitViewList"></div>
+      	</div> 
 		 
 	</div>
 </body>

@@ -98,6 +98,7 @@
 				parent.document.getElementById('pNumber').innerHTML = "환자번호 : " + this.children[0].innerHTML;
 				parent.document.getElementById('pName').innerHTML = "이름 : " + this.children[1].innerHTML;
 				parent.document.getElementById('pJumin').innerHTML = "주민번호 : " + this.children[2].innerHTML;
+				makeNode();
 				window.close();
 			})
 		}
