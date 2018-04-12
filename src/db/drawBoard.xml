@@ -51,53 +51,9 @@
    		INSERT INTO PAGET(PATHID, CDATE, CUSERID, FILESIZE, EXTENSION) VALUES( #{pathid}, #{cdate}, #{cuserid}, #{filesize}, #{extension})
    	</insert>   	
    	<insert id="insertChartPageT" parameterType="drawBoard.ChartPageTDataBean">
-   		INSERT INTO CHARTPAGET(PAGENO, TREATNO, FORMCODE, PAGE, CDNO, SECURITY, UNREADY, CDATE, CUSERID, INSCODE, MEMO) 
-   		VALUES( #{pageno}, #{treatno}, #{formcode}, #{page}, #{cdno}, #{security}, #{unready}, #{cdate}, #{cuserid}, #{inscode}, #{memo})
-   	</insert> 
-   	
-   	<select id="selectClinic" parameterType="String" resultType="viewer.PatientFormDataBean">
-   		SELECT DISTINCT NAME FROM 
-		(SELECT tr.TREATNO, tr.PATID, tr.INDATE, cl.NAME
-		FROM TREATT tr, CLINICT cl
-		WHERE tr.CLINCODE=cl.CLINCODE AND PATID=#{patId}) A,
-		(SELECT ch.PAGENO, ch.TREATNO, ch.FORMCODE, ch.PAGE, fo.NAME AS 'FORMNAME', fo.CLASS, fo.BASEIMGPATH
-		FROM CHARTPAGET ch, FORMT fo
-		WHERE ch.FORMCODE = fo.FORMCODE) B
-		WHERE A.TREATNO = B.TREATNO
-   	</select>
-   	
-   	<select id="selectIndate" parameterType="String" resultType="viewer.PatientFormDataBean">
-	   	SELECT DISTINCT INDATE, NAME FROM 
-		(SELECT tr.TREATNO, tr.PATID, tr.INDATE, cl.NAME
-		FROM TREATT tr, CLINICT cl
-		WHERE tr.CLINCODE=cl.CLINCODE AND PATID=#{patId}) A,
-		(SELECT ch.PAGENO, ch.TREATNO, ch.FORMCODE, ch.PAGE, fo.NAME AS 'FORMNAME', fo.CLASS, fo.BASEIMGPATH
-		FROM CHARTPAGET ch, FORMT fo
-		WHERE ch.FORMCODE = fo.FORMCODE) B
-		WHERE A.TREATNO = B.TREATNO
-   	</select>
-   	
-   	<select id="selectAllForm" parameterType="String" resultType="viewer.PatientFormDataBean">
-	   	SELECT *  FROM 
-		(SELECT tr.TREATNO, tr.PATID, tr.INDATE, cl.NAME
-		FROM TREATT tr, CLINICT cl
-		WHERE tr.CLINCODE=cl.CLINCODE AND PATID=#{patId}) A,
-		(SELECT ch.PAGENO, ch.TREATNO, ch.FORMCODE, ch.PAGE, fo.NAME AS 'FORMNAME', fo.CLASS, fo.BASEIMGPATH
-		FROM CHARTPAGET ch, FORMT fo
-		WHERE ch.FORMCODE = fo.FORMCODE) B
-		WHERE A.TREATNO = B.TREATNO   		
-   	</select>
-   	<select resultType="drawBoard.ChartPageTDataBean" id="selectChartpage" parameterType="String"> 
-	   	SELECT b.patid, c.patid, c.treatno, a.treatno, a.memo 
-	   	FROM CHARTPAGET a, PATIENTT b, TREATT c 
-	   	WHERE b.patid=c.patid AND c.treatno=a.treatno AND b.patid=#{patid} AND a.memo!='NULL'
-	</select>	
-   	<select resultType="drawBoard.UserFormDataBean" id="selectUserform" parameterType="String"> 
-	   	SELECT a.NAME, a.ORDERBY, a.BASEIMGPATH, a.FORMCODE, c.FORMCODE, b.USERID, c.USERID 
-	   	FROM FORMT a, USERT b, SORTUSERTABLETFORM c 
-	   	WHERE a.FORMCODE=c.FORMCODE AND b.USERID=c.USERID AND b.USERID=#{userId} 
-	</select>
-   	  	
+   		INSERT INTO CHARTPAGET(PAGENO, TREATNO, FORMCODE, PAGE, CDNO, SECURITY, UNREADY, CDATE, CUSERID, INSCODE) 
+   		VALUES( #{pageno}, #{treatno}, #{formcode}, #{page}, #{cdno}, #{security}, #{unready}, #{cdate}, #{cuserid}, #{inscode})
+   	</insert>   	
 </mapper>
 
 

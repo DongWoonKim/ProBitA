@@ -25,7 +25,6 @@ function searchInfo (info, type) {
 				document.getElementById('hiddenPatName').value = arr[0].patName;
 				document.getElementById('hiddenPatJumin').value = arr[0].patJumin.slice(0,6) + "-" + arr[0].patJumin.slice(6,arr[0].patJumin.length);
 				
-				makeNode();
 			}
 			
 			
@@ -35,49 +34,6 @@ function searchInfo (info, type) {
 }
 
 function makeNode() {
-	var viewermenu = document.getElementsByClassName('viewerMenu')[0];
-	var listTree = document.getElementById('listTree');
-	viewermenu.removeChild(listTree);
-	
-	listTree = document.createElement('div');
-	listTree.id = "listTree";
-	viewermenu.appendChild(listTree);
-	
-	
-	var patId = document.getElementById('hiddenPatId').value;
-	console.log(patId);
-	
-	var params = {"patId" : patId};
-	
-	myAjax({
-		method:"POST",
-		url:"../../PatientForm.do",
-		params:params,
-		success: function (data) { 						 
-			arr = JSON.parse(data);
-			
-			console.log(arr);
-			
-			$('#listTree').jstree({ 'core' : {
-			    'data' : arr
-			} });
-			
-		}
-	
-	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

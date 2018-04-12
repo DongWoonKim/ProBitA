@@ -43,7 +43,6 @@ public class inputChartBaseToImageDecoder implements CommandHandler {
 		String get = request.getParameter("image");
 		String patId = request.getParameter("patId");
 		String formCode = request.getParameter("formCode");		 
-		String memo = request.getParameter("memo");	 
 		
 		
 		
@@ -99,7 +98,6 @@ public class inputChartBaseToImageDecoder implements CommandHandler {
 		chartPage.setCdate(mTime);
 		chartPage.setCuserid("jup");
 		chartPage.setInscode("");
-		chartPage.setMemo(memo);
 		
 		boardDao.insertChartPageT(chartPage);
 		

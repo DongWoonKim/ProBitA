@@ -15,29 +15,9 @@ window.setInterval(function() {
 }, 3000)
 
 function selectConfig(){
-		var userid=document.getElementById('userName').innerHTML;
-		console.log(userid);
-		
-		var params = {"userid" : userid};
-	      myAjax({
-	         method:"POST",
-	         url:"../config.do",
-	         params:params,
-	         success: function (data) { 
-	                   
-	            arr = JSON.parse(data);
-	            
-	            console.log(arr);
-	            
-	            var popUp = window.open("http://localhost:8080/Pra01/main/config.jsp", "location=no","width=630, height=800, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
-	    		
-	            popUp.arr = arr;
-	            
-	         }
-	      });
-		//window.open("http://localhost:8080/Pra01/main/config.jsp", "location=no","width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
-		
-	}
+	window.open("http://localhost:8080/Pra01/main/config.jsp", "location=no","width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+
+}
 function initCanvas () {
 	// canvas
     var cnvs = document.getElementById('canvas');

@@ -132,20 +132,7 @@ public class BoardDBBean implements BoardDao {
 		sqlSession.close();
 		return result;
 	}
-	@Override
-	public List<ChartPageTDataBean> selectChartpage(String patId) {
-		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
-		List<ChartPageTDataBean> result = sqlSession.selectList("DrawBoard.selectChartpage", patId);
-		sqlSession.close();
-		return result;
-	}
-	@Override
-	public List<UserFormDataBean> selectUserform(String userid) {
-	 SqlSession sqlSession =  new SqlMapClient().getSqlSession();
-		List<UserFormDataBean> patient = sqlSession.selectList("DrawBoard.selectUserform",userid);
-		sqlSession.close();
-		return patient;
-	}
+	
 }
  
  

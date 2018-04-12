@@ -195,9 +195,8 @@ function save(){
 /////////////////////
 //canvas에 그려진 그림을 파일로 저장
 function save2(){    
-   var image = picture.canvas.toDataURL("image/png");   
-   var memo=document.getElementById('memo').innerHTML;        
-   var params = {'image':image, 'patId':patId, 'formCode':formCode, 'memo' : memo};
+   var image = picture.canvas.toDataURL("image/png");           
+   var params = {'image':image, 'patId':patId, 'formCode':formCode};
    myAjax({
       method: "POST",
       url: "../inputChartImage.do",
