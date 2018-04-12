@@ -41,8 +41,19 @@
    	<select id="selectPatientByName" resultType="drawBoard.PatientTDataBean" parameterType="String">
    		SELECT * FROM PATIENTT WHERE name=#{patName}
    	</select>	
-	
-   	
+   	<select id="selectTreatNoByPatId" resultType="int" parameterType="String">
+   		SELECT TREATNO FROM TREATT WHERE PATID=#{patId}
+   	</select>	
+   	<select id="selectAllPage" resultType="drawBoard.PageTDataBean">
+   		SELECT * FROM PAGET ORDER BY PAGENO DESC
+   	</select>	
+   	<insert id="insertPageT" parameterType="drawBoard.PageTDataBean">
+   		INSERT INTO PAGET(PATHID, CDATE, CUSERID, FILESIZE, EXTENSION) VALUES( #{pathid}, #{cdate}, #{cuserid}, #{filesize}, #{extension})
+   	</insert>   	
+   	<insert id="insertChartPageT" parameterType="drawBoard.ChartPageTDataBean">
+   		INSERT INTO CHARTPAGET(PAGENO, TREATNO, FORMCODE, PAGE, CDNO, SECURITY, UNREADY, CDATE, CUSERID, INSCODE) 
+   		VALUES( #{pageno}, #{treatno}, #{formcode}, #{page}, #{cdno}, #{security}, #{unready}, #{cdate}, #{cuserid}, #{inscode})
+   	</insert>   	
 </mapper>
 
 

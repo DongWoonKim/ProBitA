@@ -15,5 +15,8 @@ public interface BoardDao {
 	public List<PatientTDataBean> selectPatientByName(String patName);
 	//////////////////////////////////////////////////////////////////
 	public List<FormTDataBean> selectForm();
-	
+	public int selectTreatNoByPatId(String patId);
+	public List<PageTDataBean> selectAllPage();
+	public int insertPageT(PageTDataBean page);
+	public int insertChartPageT(ChartPageTDataBean chartPage);
 }

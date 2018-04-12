@@ -59,6 +59,15 @@ function initCanvas () {
 }
 var arr = [];
 window.onload = function() { 
+ 
+	  // Request 객체 생성
+	 var request = new Request();
+	 // test 라는 파라메터 값을 얻기
+	  
+	 console.log(request.getParameter("patId"));
+	 
+	 
+ 
 	//환자 번호를 받아옴
 	// Request 객체 생성
 	var request = new Request();
@@ -66,7 +75,7 @@ window.onload = function() {
 	patId = request.getParameter("patId");
 	
 	console.log("patId : ", patId)
-	
+ 
 	//차트에 글쓰기 -- 캔버스
 	picture.canvas = document.getElementById("canvas");	
 	picture.context = picture.canvas.getContext("2d");	
@@ -138,11 +147,35 @@ function selectThumImages () {
 		}
 	});
 } 
- 
+
+function Request(){
+	 var requestParam ="";
+	 
+	 //getParameter 펑션
+	  this.getParameter = function(param){
+	  //현재 주소를 decoding
+	  var url = unescape(location.href); 
+	  //파라미터만 자르고, 다시 &그분자를 잘라서 배열에 넣는다. 
+	   var paramArr = (url.substring(url.indexOf("?")+1,url.length)).split("&"); 
+	 
+	   for(var i = 0 ; i < paramArr.length ; i++){
+	     var temp = paramArr[i].split("="); //파라미터 변수명을 담음
+	 
+	     if(temp[0].toUpperCase() == param.toUpperCase()){
+	       // 변수명과 일치할 경우 데이터 삽입
+	       requestParam = paramArr[i].split("=")[1]; 
+	       break;
+	     }
+	   }
+	   return requestParam;
+	 }
+	}
+
 </script>
  
 </head> 
 <body>
+
 	<div class="chartWrap">	
 		<div id="chartMenu">		 	 
 			<form id="chartForm" class="switch switch-blue">
@@ -164,7 +197,7 @@ function selectThumImages () {
 			</div>		 
 		</div>
 		<div id="waitingList">
-						 
+							 
 		</div>
 		<div id="editorList">			 
  			<span id="mode"></span>

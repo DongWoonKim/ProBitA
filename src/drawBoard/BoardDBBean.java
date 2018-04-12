@@ -104,6 +104,35 @@ public class BoardDBBean implements BoardDao {
 		sqlSession.close();
 		return result;
 	}
+	@Override
+	public int selectTreatNoByPatId(String patId) {
+		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
+		int result = sqlSession.selectOne("DrawBoard.selectTreatNoByPatId", patId); 
+		sqlSession.close();
+		return result;
+	}
+	@Override
+	public List<PageTDataBean> selectAllPage() {
+		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
+		List<PageTDataBean> result = sqlSession.selectList("DrawBoard.selectAllPage");
+		sqlSession.close();
+		return result;
+	}	
+	@Override
+	public int insertPageT(PageTDataBean page) {
+		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
+		int result = sqlSession.insert("DrawBoard.insertPageT", page);
+		sqlSession.close();
+		return result;
+	}
+	@Override
+	public int insertChartPageT(ChartPageTDataBean chartPage) {
+		SqlSession sqlSession =  new SqlMapClient().getSqlSession();
+		int result = sqlSession.insert("DrawBoard.insertChartPageT", chartPage);
+		sqlSession.close();
+		return result;
+	}
+	
 }
  
  

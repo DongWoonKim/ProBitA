@@ -11,25 +11,7 @@ public class PathTDataBean {
 	private String alias;
 	private String active;
 	private String backuppath;
-	private String formcodename;
-	private int treatno;
-	
-	
-	
-	public int getTreatno() {
-		return treatno;
-	}
-	public void setTreatno(int treatno) {
-		this.treatno = treatno;
-	}
-	
-	
-	public String getFormcodename() {
-		return formcodename;
-	}
-	public void setFormcodename(String formcodename) {
-		this.formcodename = formcodename;
-	}   
+	  
 	public String getPathid() {
 		return pathid;
 	}

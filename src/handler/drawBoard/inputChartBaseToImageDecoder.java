@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import drawBoard.BoardDao;
+import drawBoard.ChartPageTDataBean;
+import drawBoard.PageTDataBean;
 import handler.CommandHandler;
 
 @Controller
@@ -33,21 +35,32 @@ public class inputChartBaseToImageDecoder implements CommandHandler {
 		request.setCharacterEncoding("utf-8");		
 		response.setContentType("text/html; charset=UTF-8"); 
 		
-		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyyMMddHHmmss", Locale.KOREA );
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyyMMdd", Locale.KOREA );
 		Date currentTime = new Date ();
 		String mTime = mSimpleDateFormat.format ( currentTime );
 	 
 		
 		String get = request.getParameter("image");
 		String patId = request.getParameter("patId");
-		String formCode = request.getParameter("formCode");
+		String formCode = request.getParameter("formCode");		 
 		
-		System.out.println(patId + "," + formCode);
+		
+		
+		int treatNo = boardDao.selectTreatNoByPatId(patId);
+		int lastPageNo = boardDao.selectAllPage().get(0).getPageno();
+		
+		PageTDataBean page = new PageTDataBean();
+		
+		page.setPathid("0001");
+		page.setCdate(mTime);
+		page.setCuserid("jup");
+		
+		
 		
 		get = get.replaceAll("\\p{Z}", "+");	 
 		get = get.replaceAll("_", "/");
 		get = get.replaceAll("-", "+"); 
-		String target = "C:\\BitChart\\"+mTime+".png";		
+		String target = "C:\\BitChart\\"+lastPageNo+".png";		
 		String data = get.split(",")[1];
 		
 		byte[] imageBytes = DatatypeConverter.parseBase64Binary(data);
@@ -59,10 +72,37 @@ public class inputChartBaseToImageDecoder implements CommandHandler {
 			if(!file.exists()) {
 				file.mkdirs();				 			
 			}		 			
-			ImageIO.write(bufImg, "png", file);			
+			ImageIO.write(bufImg, "png", file);
+			
 		} catch (IOException e) {
 			e.printStackTrace();			 
-		}		
+		}
+		File endFile = new File("C:\\BitChart\\"+lastPageNo+".png");
+		 
+		page.setFilesize(Integer.parseInt(Long.toString(endFile.length())));
+		page.setExtension("png");
+		
+		boardDao.insertPageT(page);
+	
+		
+		
+		lastPageNo = boardDao.selectAllPage().get(0).getPageno();
+		ChartPageTDataBean chartPage = new ChartPageTDataBean();
+		chartPage.setPageno(lastPageNo);
+		chartPage.setTreatno(treatNo);
+		chartPage.setFormcode(formCode);
+		chartPage.setPage(1);
+		chartPage.setCdno("00000");
+		chartPage.setSecurity("0");
+		chartPage.setUnready("0");
+		chartPage.setCdate(mTime);
+		chartPage.setCuserid("jup");
+		chartPage.setInscode("");
+		
+		boardDao.insertChartPageT(chartPage);
+		
+		
+		
 		return new ModelAndView("chartImageToDecoderAjax");
 	}
 }
