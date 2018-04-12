@@ -12,9 +12,6 @@
 		overflow-y: scroll;
 		width: 500px;
 		height: 500px;
-		  
-		
-				
 	}
 	
 	.header {
@@ -81,7 +78,7 @@
 			
 			id.innerHTML = arr[i].patId;
 			name.innerHTML = arr[i].patName;
-			jumin.innerHTML = arr[i].patJumin.slice(0,6) + "-" + arr[i].patJumin.slice(6,8) + "xxxxx";
+			jumin.innerHTML = arr[i].patJumin.slice(0,6) + "-" + arr[i].patJumin.slice(6,arr[i].patJumin.length);
 			hiddenInfo.value = arr[i].patJumin;
 			
 			content.appendChild(id);
