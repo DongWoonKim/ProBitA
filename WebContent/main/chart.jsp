@@ -94,7 +94,6 @@ window.onload = function() {
 		}	
 	}  
 } 
-
 function selectThumImages () {
 	var params = '';
 	myAjax({

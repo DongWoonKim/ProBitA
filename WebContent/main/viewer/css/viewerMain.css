@@ -1,0 +1,93 @@
+@charset "UTF-8";
+	.viewerWrap {
+		position: absolute;
+		left: 200px;
+	    max-width: 1400px;
+	    min-width: 1400px;
+	    height: 100%;
+ 	    
+	}
+	
+	.infoView {
+		width: 1400px;
+/* 		background-color: #00FF8D; */
+		background-color: #212B40;
+		height: 30px;
+		padding: 5px 5px;
+		box-sizing: border-box;
+		font-size: 15px;
+		color: #FFFFFF;
+		
+	}
+	
+	.infoView div {
+		display: inline-block;
+	}
+	
+	
+	.viewerMenu {
+		position: fixed;
+		width: 200px;
+		height: 100%;				
+		background-color: #C2E078;
+		box-sizing: border-box;
+	}
+	
+	.viewerMenu div {
+		display: inline-block;
+	}
+	
+	.mainView {
+		position: fixed;
+		width: 1200px;
+		height: 100%;
+		background-color: #EDFFC1;
+		box-sizing: border-box;
+		left: 400px;
+		display: inline-block;
+	}
+	
+	.pNumberSearch {
+		width: 100%;
+		height: 5%;
+		padding: 5px 5px;
+		box-sizing: border-box;			
+	}
+	
+	.menuList {
+		position: absolute;
+		top: 30px;
+		width: 40px;
+		height: 420px;		
+		border: 1px solid #000000;
+		box-sizing: border-box;
+		background-color: #FFFFFF;
+	}
+	
+	.menuListCompo {
+		width: 100%;
+		height: 70px;
+		font-size: 13px;
+		text-align: center;
+		background-color: #FFFFFF;
+		border-bottom: 1px solid #000000;
+		box-sizing: border-box;
+		font-weight: bold;
+	}
+	
+	.menuListCompo:hover {
+		 background-color: #838383;
+		 color: #FFFFFF;		 
+	}
+	
+	#listTree {
+		position: absolute;
+		top: 30px;
+		left: 40px;
+		width: 160px;
+		height: 420px;
+		border: 1px solid #000000;
+		box-sizing: border-box;
+		background-color: #FFFFFF;
+		
+	}
