@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <link rel="stylesheet" href="/Pra01/side/sideBar.css" />
 <link rel="stylesheet" href="/Pra01/main/chart.css" />  
 <script src="/Pra01/main/myAjax.js"></script>
@@ -20,6 +21,9 @@
 <script>
 
 var patId;
+var patName;
+var patJumin;
+
 var formCode;
 
 
@@ -29,7 +33,9 @@ function Request(){
 	//getParameter 펑션
 	this.getParameter = function(param){
 	//현재 주소를 decoding
- 	var url = unescape(location.href); 
+//  	var url = unescape(location.href); 
+ 	var url = decodeURI(location.href); 
+	console.log(url);
  	//파라미터만 자르고, 다시 &그분자를 잘라서 배열에 넣는다. 
 	var paramArr = (url.substring(url.indexOf("?")+1,url.length)).split("&"); 
  
@@ -60,22 +66,29 @@ function initCanvas () {
 var arr = [];
 window.onload = function() { 
  
-	  // Request 객체 생성
-	 var request = new Request();
-	 // test 라는 파라메터 값을 얻기
-	  
-	 console.log(request.getParameter("patId"));
-	 
-	 
- 
+	// Request 객체 생성
+	var request = new Request(); 
 	//환자 번호를 받아옴
 	// Request 객체 생성
 	var request = new Request();
 	// 환자번호 파라미터 값을 얻기
 	patId = request.getParameter("patId");
+	patName = request.getParameter("patName");
+	patJumin = request.getParameter("patJumin");
 	
-	console.log("patId : ", patId)
- 
+	console.log("patId : " + patId + " patName : " + patName + "patJumin" + patJumin)
+	
+	var templates = '<div>';
+	templates += '<span>환자이름 : </span>';
+	templates += patName;
+	templates += '<span>생년월일 : </span>';
+	templates += patJumin;
+	templates += '<span>환자번호 : </span>';
+	templates += patId;
+	templates += '</div>'; 
+	
+	document.getElementById('waitingList').innerHTML = templates;
+	
 	//차트에 글쓰기 -- 캔버스
 	picture.canvas = document.getElementById("canvas");	
 	picture.context = picture.canvas.getContext("2d");	

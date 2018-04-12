@@ -11,7 +11,9 @@
 <script>
    function goChart() {
       var hiddenPatId = document.getElementById('hiddenPatId').value;       
-      location.href="http://localhost:8080/Pra01/main/chart.jsp?patId=" + hiddenPatId;      
+      var hiddenPatName = document.getElementById('hiddenPatName').value;
+      var hiddenPatJumin = document.getElementById('hiddenPatJumin').value;
+      location.href="http://localhost:8080/Pra01/main/chart.jsp?patId=" + hiddenPatId + "&patName=" + hiddenPatName + "&patJumin=" + hiddenPatJumin;      
    }
    
 </script>
